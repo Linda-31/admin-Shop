@@ -1,0 +1,51 @@
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+
+}
+.no-decoration {
+  text-decoration: none;
+   color: inherit;
+}
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  
+}
+
+
+.sidebar li:hover {
+  background-color: #495057;
+  color:rgb(50, 200, 238);
+}
+
+.custom-sidebar {
+  background-color: #1e1e2f; 
+
+}
+
+.logout li {
+list-style: none;
+ margin-top: 280px;
+ padding: 10px;
+} 
+
+.tablewrap {
+width: 75%;
+float: right;
+}
+.wrap {
+  float:left;
+}
