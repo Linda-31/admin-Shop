@@ -33,7 +33,21 @@
 
 .custom-sidebar {
   background-color: #1e1e2f; 
+}
 
+.background {
+  background-color: rgb(200, 204, 207);
+}
+.nav-bar {
+  background-color: #1e1e2f; 
+
+}
+ .custom-toggler {
+ background-color: #c6cace;  
+  border: 1px solid rgb(235, 229, 229);
+  padding: 10px;
+  border-radius: 8px;
+   margin-left: auto;
 }
 
 .logout li {
@@ -45,7 +59,37 @@ list-style: none;
 .tablewrap {
 width: 75%;
 float: right;
+margin-top: 50px;
 }
 .wrap {
   float:left;
 }
+.dashboard-container {
+  height: 200px; 
+   max-width: 900px;
+   margin:5px auto;
+   margin-top: 50px;
+   border-radius: 8px;
+}
+.chart-card {
+  margin: 22px auto;     
+  width: 50%;              
+   margin-top: 50px;
+}
+.text-head {
+  color:rgb(32, 149, 179);
+  font-weight: 800;
+  font-size: 38px;
+}
+
+.col-md-4 .card.text-dark.bg-white .card-title {
+  color: rgb(10, 134, 165); 
+}
+
+.col-md-4 .card.text-dark.bg-white .card-text {
+  color: rgb(18, 93, 112);
+    font-weight: 800;
+    font-size: 20px;
+}
+
+

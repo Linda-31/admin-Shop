@@ -11,9 +11,20 @@ function Sidebar() {
   };
 
   return (
+    <>
+    <div className="flex-grow-1">
+       <nav className="navbar navbar-light nav-bar">
+         <img src="/images/logo1.png"  alt="Logo" height="50"  width="140" className="me-2" />
+          <button className=" custom-toggler " type="button"  onClick={toggleSidebar}>
+            <span className="navbar-toggler-icon"></span>
+          </button>
+       </nav>
+      
+      </div>
+    
     <div className="wrap" >
       <div className={`custom-sidebar text-white sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
-        <img src="/images/logo.png"  alt="Logo" height="80"  width="140" className="me-2" />
+       
         <div className="p-3">
           
             <ul className="nav flex-column">
@@ -24,22 +35,15 @@ function Sidebar() {
             
            </ul>
         </div>
+        
+        
      <div className='logout'>
-     <li className="nav-item "><i className="bi bi-box-arrow-right me-2"></i> Logout</li></div>
+       <li className="nav-item "><i className="bi bi-box-arrow-right me-2"></i> Logout</li>
+     </div>
       </div>
-
     
-      <div className="flex-grow-1">
-       <nav className="navbar navbar-light bg-light">
-          <button className="navbar-toggler" type="button" onClick={toggleSidebar}>
-            <span className="navbar-toggler-icon"></span>
-          </button>
-         
-        </nav>
-
-      
-      </div>
     </div>
+    </>
   );
 }
 

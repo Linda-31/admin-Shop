@@ -1,14 +1,15 @@
 import React from "react";
 import '../Styles/style.css'; 
-import AreaChart from "./areachat";
+import AreaChart from "../Component/areachat";
 function Home (){
     return (
        
-      <div className="d-flex" id="wrapper">
-    
-        <div className='d-flex gap-2'>
+      <div className="background">
+        <h3 className="text-head">Dashboard </h3>
+        
+        <div className='d-flex gap-4 dashboard-container'>
         <div className="col-md-4">
-          <div className="card text-white bg-primary h-100">
+          <div className="card text-dark bg-white  h-100 ">
             <div className="card-body d-flex align-items-center">
               <i className="bi bi-cash-coin fs-1 me-3"></i>
               <div>
@@ -21,7 +22,7 @@ function Home (){
 
         {/* Top Sales */}
         <div className="col-md-4">
-          <div className="card text-white bg-success h-100">
+          <div className="card text-dark bg-white  h-100">
             <div className="card-body d-flex align-items-center">
               <i className="bi bi-bar-chart-line-fill fs-1 me-3"></i>
               <div>
@@ -34,7 +35,7 @@ function Home (){
 
         {/* New Customers */}
         <div className="col-md-4">
-          <div className="card text-white bg-warning h-100">
+          <div className="card text-dark bg-white  h-100">
             <div className="card-body d-flex align-items-center">
               <i className="bi bi-people-fill fs-1 me-3"></i>
               <div>
@@ -44,7 +45,6 @@ function Home (){
             </div>
           </div>
           </div>
-
      
         </div>
         <AreaChart />

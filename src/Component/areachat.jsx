@@ -12,7 +12,7 @@ import {
   Title,
 } from 'chart.js';
 
-// Register components
+
 ChartJS.register(
   LineElement,
   CategoryScale,
@@ -32,8 +32,8 @@ const AreaChart = () => {
         label: 'Dress Sales ($)',
         data: [3200, 4500, 3800, 6200, 7100, 6900],
         fill: true,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)', // Light red
-        borderColor: 'rgba(255, 99, 132, 1)',       // Red
+        backgroundColor:'rgb(193, 212, 224)',
+        borderColor: 'rgb(108, 171, 212)',       
         tension: 0.4,
         pointRadius: 5,
         pointHoverRadius: 7,
@@ -54,7 +54,7 @@ const AreaChart = () => {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: value => `$${value}`, // Format as dollars
+          callback: value => `$${value}`, 
         },
       },
     },
@@ -62,7 +62,7 @@ const AreaChart = () => {
 
   return (
     <div className="container mt-4">
-      <div className="card shadow">
+      <div className="card shadow chart-card">
         <div className="card-body">
           <Line data={data} options={options} />
         </div>
