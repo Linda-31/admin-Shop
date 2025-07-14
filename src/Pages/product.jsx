@@ -1,14 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+function Product() {
+  const navigate = useNavigate();
+  const handleAddProduct = () => {
+    navigate("/add-product");
+  };
 
-function Product (){
-    
-const products = [
-  { id: 1, name: "Product A", category: "Category 1", price: 25.99, stock: 100 },
-  { id: 2, name: "Product B", category: "Category 2", price: 45.0, stock: 50 },
-  { id: 3, name: "Product C", category: "Category 3", price: 12.5, stock: 200 },
-];
-    return (
-       <div className="container mt-4">
+  const products = [
+    { id: 1, name: "Product A", category: "Category 1", price: 25.99, stock: 100 },
+    { id: 2, name: "Product B", category: "Category 2", price: 45.0, stock: 50 },
+    { id: 3, name: "Product C", category: "Category 3", price: 12.5, stock: 200 },
+  ];
+  return (
+    <div className="container mt-4">
       <h2 className="mb-4">Products Management</h2>
 
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -19,7 +23,7 @@ const products = [
             placeholder="Search products..."
           />
         </div>
-        <button className="btn btn-primary">+ Add Product</button>
+        <button className="btn btn-primary" onClick={handleAddProduct}>+ Add Product</button>
       </div>
 
       <div className="table-responsive">
@@ -56,7 +60,7 @@ const products = [
         </table>
       </div>
     </div>
-    )
+  )
 }
 
 export default Product;

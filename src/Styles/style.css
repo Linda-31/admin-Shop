@@ -93,3 +93,29 @@ margin-top: 50px;
 }
 
 
+.product-form {
+  font-family: 'Roboto', sans-serif;
+  width: 1000px;
+  height: 1200px;
+  position: absolute;
+  left: 22%;
+  padding: 60px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background-color: #f8f9fa;
+}
+
+.label-styled {
+  color: #343a40;       
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+.image-preview-box {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}

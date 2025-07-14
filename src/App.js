@@ -5,6 +5,7 @@ import Product from './Pages/product';
 import Order from './Pages/order';
 import Home from './Pages/home';
 import Dashboard from './Pages/dashboard';
+import AddProduct from './Pages/Addproduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -14,12 +15,14 @@ function App() {
   
    <Router>
       <Routes>
-      <Route path="/dashboard" element={<Dashboard />}>
+      <Route path="/" element={<Dashboard />}>
+       <Route index element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="user" element={<User />} />
         <Route path="product" element={<Product />} />
         <Route path="order" element={<Order />} /> 
-      </Route>
+        <Route path="/add-product" element={<AddProduct />} />
+       </Route>
         </Routes>
      
       </Router>
