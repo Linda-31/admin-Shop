@@ -41,7 +41,7 @@ const getStatusBadge = (status) => {
 };
 
     return (
-        <div className="container mt-4">
+            <div className="tablewrap">
       <h2 className="mb-4">Orders Management</h2>
 
       <div className="table-responsive">

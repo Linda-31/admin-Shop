@@ -12,20 +12,11 @@ function Sidebar() {
 
   return (
     <>
-    <div className="flex-grow-1">
-       <nav className="navbar navbar-light nav-bar">
-         <img src="/images/logo1.png"  alt="Logo" height="50"  width="140" className="me-2" />
-          <button className=" custom-toggler " type="button"  onClick={toggleSidebar}>
-            <span className="navbar-toggler-icon"></span>
-          </button>
-       </nav>
-      
-      </div>
     
     <div className="wrap" >
-      <div className={`custom-sidebar text-white sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
-       
-        <div className="p-3">
+      
+      <div className={`custom-sidebar sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
+               <div className="p-3 sidebar-nav">
           
             <ul className="nav flex-column">
             <li className="nav-item"> <i className="bi bi-house-door me-2"></i><Link to="home " className="no-decoration">Dashboard</Link></li>

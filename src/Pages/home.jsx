@@ -1,10 +1,11 @@
 import React from "react";
 import '../Styles/style.css'; 
 import AreaChart from "../Component/areachat";
+
 function Home (){
     return (
        
-      <div className="background">
+         <div className="tablewrap">
         <h3 className="text-head">Dashboard </h3>
         
         <div className='d-flex gap-4 dashboard-container'>

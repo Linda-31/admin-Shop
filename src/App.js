@@ -6,6 +6,8 @@ import Order from './Pages/order';
 import Home from './Pages/home';
 import Dashboard from './Pages/dashboard';
 import AddProduct from './Pages/Addproduct';
+import UserDetails from './Component/UserDetails';
+import ProductDetail from './Component/productDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -22,6 +24,8 @@ function App() {
         <Route path="product" element={<Product />} />
         <Route path="order" element={<Order />} /> 
         <Route path="/add-product" element={<AddProduct />} />
+         <Route path="/users/:id" element={<UserDetails />} /> 
+         <Route path="/products/:id" element={<ProductDetail />} />
        </Route>
         </Routes>
      
