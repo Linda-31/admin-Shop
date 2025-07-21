@@ -15,14 +15,8 @@ function User() {
   useEffect(() => {
     axios.get('http://localhost:4000/api/users')
       .then(res => {
-        setUsers(res.data.map(user => ({
-          id: user._id,
-          name: user.fullName,
-          email: user.email,
-          mobile: user.mobile || 'N/A',
-          deliveryAddress: user.deliveryAddress || 'N/A',
-          status: user.status || 'Active'
-        })));
+        setUsers(res.data);
+
       })
       .catch(err => {
         console.error("Error fetching users:", err);
@@ -48,7 +42,7 @@ function User() {
 
       searchUsers();
     }, 500);
- return () => clearTimeout(delaySearch);
+    return () => clearTimeout(delaySearch);
   }, [searchQuery]);
 
   const handleDelete = (id) => {
@@ -68,7 +62,7 @@ function User() {
   };
 
   const handleEdit = (user) => {
-    setEditingId(user.id);
+    setEditingId(user._id);
     setEditedUser({ ...user });
   };
 
@@ -79,7 +73,7 @@ function User() {
 
   const handleSave = (id) => {
     axios.put(`http://localhost:4000/api/users/${id}`, {
-      fullName: editedUser.name,
+      fullName: editedUser.fullName,
       email: editedUser.email,
       mobile: editedUser.mobile,
       deliveryAddress: editedUser.deliveryAddress,
@@ -88,7 +82,7 @@ function User() {
       .then(() => {
         setUsers(prevUsers =>
           prevUsers.map(user =>
-            user.id === id ? editedUser : user
+            user._id === id ? editedUser : user
           )
         );
         setEditingId(null);
@@ -135,10 +129,10 @@ function User() {
               <tr><td colSpan="6" className="text-center">No users found</td></tr>
             ) : (
               users.map(user => (
-                <tr key={user.id}>
-                  {editingId === user.id ? (
+                <tr key={user._id}>
+                  {editingId === user._id ? (
                     <>
-                      <td><input name="name" value={editedUser.name} onChange={handleInputChange} className="form-control" /></td>
+                      <td><input name="fullName" value={editedUser.fullName} onChange={handleInputChange} className="form-control" /></td>
                       <td><input name="email" value={editedUser.email} onChange={handleInputChange} className="form-control" /></td>
                       <td><input name="mobile" value={editedUser.mobile} onChange={handleInputChange} className="form-control" /></td>
                       <td><input name="deliveryAddress" value={editedUser.deliveryAddress} onChange={handleInputChange} className="form-control" /></td>
@@ -146,25 +140,25 @@ function User() {
                         <select name="status" value={editedUser.status} onChange={handleInputChange} className="form-select">
                           <option value="Active">Active</option>
                           <option value="Inactive">Inactive</option>
-                          <option value="Inactive">Pending</option>
                         </select>
                       </td>
                       <td>
-                        <button className="btn btn-success btn-sm me-2" onClick={() => handleSave(user.id)}>Save</button>
+                        <button className="btn btn-success btn-sm me-2" onClick={() => handleSave(user._id)}>Save</button>
                         <button className="btn btn-secondary btn-sm" onClick={handleCancel}>Cancel</button>
                       </td>
                     </>
                   ) : (
                     <>
-                      <td>{user.name}</td>
+                      <td>{user.fullName}</td>
+
                       <td>{user.email}</td>
                       <td>{user.mobile}</td>
                       <td>{user.deliveryAddress}</td>
                       <td>{user.status}</td>
                       <td>
                         <button className="btn btn-sm btn-primary me-2" onClick={() => handleEdit(user)}>Edit</button>
-                        <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => handleView(user.id)}>View</button>
-                        <button className="btn btn-sm btn-danger" onClick={() => handleDelete(user.id)}>Delete</button>
+                        <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => handleView(user._id)}>View</button>
+                        <button className="btn btn-sm btn-danger" onClick={() => handleDelete(user._id)}>Delete</button>
                       </td>
                     </>
                   )}
