@@ -19,7 +19,8 @@ function Product() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:4000/api/products");
-        setProducts(response.data);
+
+        setProducts(response.data.reverse());
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -36,10 +37,10 @@ function Product() {
         try {
           if (searchQuery.trim() === "") {
             const res = await axios.get("http://localhost:4000/api/products");
-            setProducts(res.data);
+            setProducts(res.data.reverse());
           } else {
             const res = await axios.get(`http://localhost:4000/api/products/search?q=${searchQuery}`);
-            setProducts(res.data);
+            setProducts(res.data.reverse());
           }
         } catch (error) {
           console.error("Search failed:", error);
@@ -52,7 +53,7 @@ function Product() {
 
     return () => clearTimeout(delaySearch);
   }, [searchQuery]);
-  
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:4000/api/products/${id}`);
