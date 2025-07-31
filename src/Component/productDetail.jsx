@@ -26,7 +26,8 @@ function ProductDetail() {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="container d-flex justify-content-center" style={{ marginTop: '100px', minHeight: '80vh' }}>
+    <div className="container d-flex justify-content-center" style={{ marginTop: '100px', minHeight: '80vh',fontSize: '17px', 
+fontFamily: '"Roboto", sans-serif'  }}>
       <div className="card shadow p-4" style={{ maxWidth: '600px', width: '100%' }}>
         <h1 className="text-center mb-4">{product.title}</h1>
         <div className="d-flex justify-content-center mb-4">

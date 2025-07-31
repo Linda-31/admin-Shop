@@ -26,7 +26,8 @@ function OrderDetail() {
   if (!order) return <p>Order not found.</p>;
 
   return (
-    <div className="container " style={{ marginTop: '80px',marginLeft: '220px'  }}>
+    <div className="container " style={{ marginTop: '80px',marginLeft: '220px',fontSize: '16px', 
+fontFamily: '"Roboto", sans-serif'  }}>
       <h2 className="mb-4">Order Details</h2>
       <div className="mb-4">
         <strong>Order ID:</strong> {order.orderId}<br />

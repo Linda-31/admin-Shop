@@ -28,11 +28,11 @@ function Order() {
       const searchOrders = async () => {
         try {
           if (searchQuery.trim() === "") {
-            const res = await axios.get("http://localhost:4000/api/orders");
-            setOrders(res.data.reverse());
+            const res = await axios.get("http://localhost:4000/api/orders/all");
+            setOrders(res.data);
           } else {
             const res = await axios.get(`http://localhost:4000/api/orders/search?q=${searchQuery}`);
-            setOrders(res.data.reverse());
+            setOrders(res.data);
           }
         } catch (error) {
           console.error("Search failed:", error);

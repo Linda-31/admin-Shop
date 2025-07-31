@@ -8,8 +8,6 @@ function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [editProductId, setEditProductId] = useState(null);
-  const [editFormData, setEditFormData] = useState({ title: "", price: "", stock: "" });
 
   const handleAddProduct = () => {
     navigate("/add-product");
@@ -65,46 +63,19 @@ function Product() {
     }
   };
 
-  const handleEditClick = (product) => {
-    setEditProductId(product._id);
-    setEditFormData({
-      title: product.title,
-      price: product.price,
-      stock: product.stock
-    });
-  };
+  const handleEditClick = (id) => {
+     navigate(`/products/edit/${id}`);
+    };
 
-
-
-  const handleEditChange = (e) => {
-    setEditFormData({ ...editFormData, [e.target.name]: e.target.value });
-  };
-
-  const handleEditSave = async (id) => {
-    try {
-      const response = await axios.put(`http://localhost:4000/api/products/${id}`, editFormData);
-      setProducts((prev) =>
-        prev.map((product) =>
-          product._id === id ? response.data.product : product
-        )
-      );
-      setEditProductId(null);
-    } catch (error) {
-      console.error("Failed to update product:", error);
-    }
-  };
   const handleView = (id) => {
     navigate(`/products/${id}`);
-  };
-
-  const handleCancelEdit = () => {
-    setEditProductId(null);
   };
 
   if (loading) return <div className="container mt-4">Loading products...</div>;
 
   return (
-    <> <Toaster richColors position="top-right" />
+      <>
+      <Toaster richColors position="top-right" />
       <div className="background">
         <h2 className="mb-4">Products List</h2>
 
@@ -135,93 +106,48 @@ function Product() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => {
-                const isEditing = editProductId === product._id;
-                return (
-                  <tr key={product._id}>
-                    <td>
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "5px" }}
+              {products.map((product) => (
+                <tr key={product._id}>
+                  <td>
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "5px" }}
+                    />
+                  </td>
+                  <td>{product.title}</td>
+                  <td>{product.createdAt ? new Date(product.createdAt).toLocaleDateString() : "-"}</td>
+                  <td>₹{product.price.toFixed(1)}</td>
+                  <td>{product.stock}</td>
+                  <td>
+                    <div className="progress" style={{ height: '10px', width: '60%' }}>
+                      <div
+                        className="progress-bar"
+                        role="progressbar"
+                        style={{
+                          width: `${Math.min((product.stock / 500) * 100, 100)}%`,
+                          backgroundColor: product.stock > 300 ? 'green' : product.stock > 150 ? 'orange' : 'red'
+                        }}
+                        aria-valuenow={product.stock}
+                        aria-valuemin="0"
+                        aria-valuemax="500"
                       />
-                    </td>
-                    <td>
-                      {isEditing ? (
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="title"
-                          value={editFormData.title}
-                          onChange={handleEditChange}
-                        />
-                      ) : (
-                        product.title
-                      )}
-                    </td>
-                    <td>{product.createdAt ? new Date(product.createdAt).toLocaleDateString() : "-"}</td>
-                    <td>
-                      {isEditing ? (
-                        <input
-                          type="number"
-                          className="form-control"
-                          name="price"
-                          value={editFormData.price}
-                          onChange={handleEditChange}
-                        />
-                      ) : (
-                        `₹${product.price.toFixed(1)}`
-                      )}
-                    </td>
-                    <td>{product.stock}</td>
-                    <td>
-                      {isEditing ? (
-                        <input
-                          type="number"
-                          className="form-control"
-                          name="stock"
-                          value={editFormData.stock}
-                          onChange={handleEditChange}
-                        />
-                      ) : (
-                        <div className="progress" style={{ height: '10px', width: '60%' }}>
-                          <div
-                            className="progress-bar"
-                            role="progressbar"
-                            style={{
-                              width: `${Math.min((product.stock / 500) * 100, 100)}%`,
-                              backgroundColor: product.stock > 300 ? 'green' : product.stock > 150 ? 'orange' : 'red'
-                            }}
-                            aria-valuenow={product.stock}
-                            aria-valuemin="0"
-                            aria-valuemax="500"
-                          />
-                        </div>
-                      )}
-                    </td>
-                    <td>
-                      {isEditing ? (
-                        <>
-                          <button className="btn btn-sm btn-success me-2" onClick={() => handleEditSave(product._id)}>Save</button>
-                          <button className="btn btn-sm btn-secondary" onClick={handleCancelEdit}>Cancel</button>
-                        </>
-                      ) : (
-                        <>
-                          <button className="btn btn-sm btn-warning me-2" onClick={() => handleEditClick(product)}>Edit</button>
-                          <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => handleView(product._id)}>View</button>
-                          <button className="btn btn-sm btn-danger" onClick={() => handleDelete(product._id)}>Delete</button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
+                    </div>
+                  </td>
+                  <td>
+                    <button className="btn btn-sm btn-warning me-2" onClick={() => handleEditClick(product._id)}>Edit</button>
+                    <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => handleView(product._id)}>View</button>
+                    <button className="btn btn-sm btn-danger" onClick={() => handleDelete(product._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
     </>
   );
+
 }
 
 export default Product;

@@ -11,6 +11,7 @@ import ProductDetail from './Component/productDetail';
 import OrderDetail from './Component/orderDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import ProductEdit from './Pages/productedit';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
          <Route path="/users/:id" element={<UserDetails />} /> 
          <Route path="/products/:id" element={<ProductDetail />} />
          <Route path="/orders/:id" element={<OrderDetail />} />
-       </Route>
+          <Route path="/products/edit/:id" element={<ProductEdit />} />
+        </Route>
         </Routes>
      
       </Router>

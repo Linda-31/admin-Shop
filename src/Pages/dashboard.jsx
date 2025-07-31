@@ -10,7 +10,7 @@ function Dashboard() {
     <div className="dashboard-layout">
        <Navbar />
       <Sidebar />
-        <div className="main-content">
+        <div className="main-content"  style={{  backgroundColor: '#e5f4fdff',}}>
       <Outlet />
 </div>
     </div>
