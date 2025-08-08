@@ -74,7 +74,7 @@ function ProductEdit() {
         paddingLeft: '180px',
         paddingTop: '70px',
         fontSize: '17px',
-        fontFamily: '"Roboto", sans-serif',
+        fontFamily: '"Poppins", sans-serif',
         fontWeight: '500',
      }}
     >

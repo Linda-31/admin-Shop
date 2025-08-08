@@ -12,7 +12,7 @@ import OrderDetail from './Component/orderDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import ProductEdit from './Pages/productedit';
-
+import UserEdit from './Component/userEdit';
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
          <Route path="/products/:id" element={<ProductDetail />} />
          <Route path="/orders/:id" element={<OrderDetail />} />
           <Route path="/products/edit/:id" element={<ProductEdit />} />
+           <Route path="/users/edit/:id" element={<UserEdit />} />
         </Route>
         </Routes>
      

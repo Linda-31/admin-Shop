@@ -21,10 +21,23 @@ function UserDetails() {
   if (!user) return <p className="text-center mt-5 text-danger">User not found</p>;
 
   return (
-    <div className="container d-flex justify-content-center align-items-center user-details-container" style={{ minHeight: '80vh', marginTop: '40px', fontSize: '17px', 
-fontFamily: '"Roboto", sans-serif'  }}>
+    <div className="container d-flex justify-content-center align-items-center user-details-container" style={{
+      minHeight: '80vh', marginTop: '40px', fontSize: '17px',
+      fontFamily: '"Roboto", sans-serif'
+    }}>
       <div className="card shadow-lg p-4 user-details-card" style={{ width: '100%', maxWidth: '600px' }}>
-        <h3 className="text-center mb-4">User Details</h3>
+        <div className="row mb-3 justify-content-center">
+          <div className="col-auto">
+            <img
+              src={user.image}
+              alt="User Profile"
+              className="rounded-circle"
+              style={{ width: "100px", height: "100px", objectFit: "cover" }}
+            />
+          </div>
+           <h5 style={{ fontWeight:"600", fontSize:"26px" }} className="text-center mb-4">{user.fullName}</h5>
+        </div>
+         <h3  className=" mb-4" >User Details</h3>
         <div className="row mb-2">
           <div className="col-5 fw-semibold">First Name:</div>
           <div className="col-7">{user.fullName}</div>
